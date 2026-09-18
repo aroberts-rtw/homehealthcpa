@@ -1,0 +1,38 @@
+---
+import { siteConfig } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="mt-32 border-t border-stone-200 bg-white">
+  <div class="mx-auto max-w-4xl px-6 py-16">
+    <div class="grid gap-12 md:grid-cols-3">
+      <div class="md:col-span-2">
+        <span class="flex flex-col leading-none">
+          <span class="font-serif text-lg font-bold tracking-tight text-slate-900">
+            HomeHealth<span class="text-teal-600">CPA</span>
+          </span>
+          <span class="text-[10px] font-medium tracking-[0.18em] text-slate-500 mt-0.5">by RTW ADVISORS</span>
+        </span>
+        <p class="mt-6 text-sm text-slate-600 max-w-md leading-relaxed">
+          Bookkeeping, tax preparation, and fractional CFO advisory for home health agencies.
+          Focused on Medicare/Medicaid billing, EVV compliance, cost reports, and owner compensation.
+          Powered by <a href={siteConfig.parentUrl} class="underline hover:text-slate-900">RTW Advisors</a>.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-slate-500">Resources</h4>
+        <ul class="mt-4 space-y-2 text-sm text-slate-600">
+          <li><a href="/articles" class="hover:text-teal-700 transition">Articles</a></li>
+          <li><a href="/about" class="hover:text-teal-700 transition">About Askia Roberts, CPA</a></li>
+          <li><a href="/get-started" class="hover:text-teal-700 transition">Get started</a></li>
+          <li><a href={siteConfig.contact.portal} class="hover:text-teal-700 transition">Client portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-stone-200 pt-8 space-y-4 text-xs text-slate-500 leading-relaxed">
+      <p>HomeHealthCPA © {year} · CPA services provided by {siteConfig.founder.name}, {siteConfig.founder.suffix} ({siteConfig.founder.licensure} License #{siteConfig.founder.licenseNumber}), through RTW Advisors LLC.</p>
+      <p class="max-w-4xl">
+        Educational content only. Not tax, legal, or investment advice. Tax outcomes depend on your specific facts, entity structure, and applicable law. Consult a qualified professional before acting on any information here.
+      </p>
+    </div>
+  </div>
+</footer>

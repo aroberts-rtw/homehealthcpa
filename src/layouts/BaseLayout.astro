@@ -1,0 +1,149 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { siteConfig } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const { title, description, canonical, noindex } = Astro.props;
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['Organization', 'ProfessionalService', 'AccountingService'],
+      '@id': `${siteConfig.url}/#organization`,
+      name: siteConfig.fullName,
+      legalName: 'RTW Advisors LLC',
+      url: siteConfig.url,
+      email: siteConfig.contact.email,
+      description: siteConfig.description,
+      foundingDate: '2015',
+      parentOrganization: {
+        '@type': 'Organization',
+        name: siteConfig.parentName,
+        url: siteConfig.parentUrl,
+      },
+      founder: { '@id': `${siteConfig.url}/#askia-roberts` },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Atlanta',
+        addressRegion: 'GA',
+        addressCountry: 'US',
+      },
+      areaServed: { '@type': 'Country', name: 'United States' },
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'Certified Public Accountant',
+        recognizedBy: {
+          '@type': 'Organization',
+          name: 'Georgia State Board of Accountancy',
+        },
+      },
+      knowsAbout: [
+        'home health agency accounting',
+        'Medicare cost report preparation',
+        'Medicaid billing revenue recognition',
+        'EVV compliance cost accounting',
+        'home health agency tax planning',
+        'S-Corp election for home health owners',
+        'fractional CFO for home health agencies',
+        'home health agency bookkeeping',
+        'PDGM cash flow impact',
+        'caregiver payroll and tax compliance',
+        'VA Community Care Network billing',
+      ],
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteConfig.url}/#askia-roberts`,
+      name: `${siteConfig.founder.name}, ${siteConfig.founder.suffix}`,
+      honorificSuffix: siteConfig.founder.suffix,
+      jobTitle: `${siteConfig.founder.role} & CPA`,
+      email: siteConfig.contact.email,
+      url: `${siteConfig.url}/about`,
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'Certified Public Accountant',
+        recognizedBy: {
+          '@type': 'Organization',
+          name: 'Georgia State Board of Accountancy',
+        },
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.url}/#website`,
+      url: siteConfig.url,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      publisher: { '@id': `${siteConfig.url}/#organization` },
+      inLanguage: 'en-US',
+    },
+  ],
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={siteConfig.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    {/* Search Console verification tag — replace TODO_SC_VERIFICATION with actual tag from Search Console */}
+    {import.meta.env.PUBLIC_SC_VERIFICATION && (
+      <meta name="google-site-verification" content={import.meta.env.PUBLIC_SC_VERIFICATION} />
+    )}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+
+    {ga4Id && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script set:html={`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ga4Id}');`} />
+      </>
+    )}
+
+    <slot name="head" />
+    <slot name="schema" />
+  </head>
+  <body class="bg-stone-50 text-slate-900 antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

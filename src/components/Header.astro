@@ -1,0 +1,25 @@
+---
+import { siteConfig } from '../data/site';
+---
+<header class="border-b border-stone-200/70 bg-stone-50/80 backdrop-blur-md sticky top-0 z-50">
+  <div class="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+    <a href="/" class="flex items-center gap-2" aria-label="HomeHealthCPA home">
+      <span class="flex flex-col leading-none">
+        <span class="font-serif text-lg font-bold tracking-tight text-slate-900">
+          HomeHealth<span class="text-teal-600">CPA</span>
+        </span>
+        <span class="text-[10px] font-medium tracking-[0.18em] text-slate-500 mt-0.5">by RTW ADVISORS</span>
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+      <a href="/articles" class="hover:text-slate-900 transition">Articles</a>
+      <a href="/about" class="hover:text-slate-900 transition">About</a>
+    </nav>
+    <a
+      href="/get-started"
+      class="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+    >
+      Get Started
+    </a>
+  </div>
+</header>

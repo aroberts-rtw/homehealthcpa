@@ -1,0 +1,171 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { siteConfig } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  author?: string;
+  licenseNumber?: string;
+  targetQuery?: string;
+  ctaHeadline?: string;
+  ctaBody?: string;
+  canonicalUrl: string;
+  faqs?: { q: string; a: string }[];
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  author = `${siteConfig.founder.name}, ${siteConfig.founder.suffix}`,
+  licenseNumber = siteConfig.founder.licenseNumber,
+  targetQuery,
+  ctaHeadline,
+  ctaBody,
+  canonicalUrl,
+  faqs,
+} = Astro.props;
+
+const dateFormatted = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+const updatedFormatted = updatedDate?.toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  ...(targetQuery ? { keywords: targetQuery } : {}),
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: siteConfig.founder.name,
+    honorificSuffix: siteConfig.founder.suffix,
+    '@id': `${siteConfig.url}/#askia-roberts`,
+  },
+  publisher: { '@id': `${siteConfig.url}/#organization` },
+  mainEntityOfPage: canonicalUrl,
+  url: canonicalUrl,
+};
+
+const faqSchema = faqs && faqs.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    }
+  : null;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'HomeHealthCPA', item: siteConfig.url },
+    { '@type': 'ListItem', position: 2, name: 'Articles', item: `${siteConfig.url}/articles` },
+    { '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
+  ],
+};
+
+const defaultCtaHeadline = 'Working with a CPA who understands home health is different from working with one who says they do.';
+const defaultCtaBody = 'Most home health agency owners we talk to are either over-paying on taxes because their CPA doesn\'t know the cost report interaction, or under-documenting distributions in a way that invites scrutiny. See how RTW Advisors approaches this differently.';
+---
+<BaseLayout title={`${title} | HomeHealthCPA`} description={description} canonical={canonicalUrl}>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-6 py-12">
+    <nav class="mb-8 text-sm text-slate-500">
+      <a href="/" class="hover:text-slate-900 transition">HomeHealthCPA</a>
+      <span class="mx-2">›</span>
+      <a href="/articles" class="hover:text-slate-900 transition">Articles</a>
+      <span class="mx-2">›</span>
+      <span class="text-slate-700">{title}</span>
+    </nav>
+
+    <div class="mx-auto max-w-2xl">
+      <header class="mb-10">
+        <h1 class="font-serif text-3xl font-bold leading-tight text-slate-900 md:text-4xl">{title}</h1>
+        <p class="mt-4 text-lg text-slate-600 leading-relaxed">{description}</p>
+        <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-stone-200 pt-5 text-sm text-slate-500">
+          <a href="/about" class="font-medium text-slate-700 hover:text-teal-700 transition">{author}</a>
+          <span>·</span>
+          <span>GA License #{licenseNumber}</span>
+          <span>·</span>
+          <time datetime={pubDate.toISOString()}>{dateFormatted}</time>
+          {updatedDate && (
+            <>
+              <span>·</span>
+              <span>Updated <time datetime={updatedDate.toISOString()}>{updatedFormatted}</time></span>
+            </>
+          )}
+        </div>
+      </header>
+
+      <div class="prose-article">
+        <slot />
+      </div>
+
+      <div class="mt-12 rounded-lg border border-stone-200 bg-stone-100 px-5 py-4 text-xs text-slate-500 leading-relaxed">
+        <strong class="text-slate-600">Educational content only.</strong> This article is for general informational purposes and does not constitute tax, legal, or financial advice. Tax outcomes depend on your specific facts, circumstances, entity structure, and applicable law. Consult a qualified professional before acting on any information here.
+      </div>
+
+      <div class="mt-8 rounded-xl border border-teal-200 bg-teal-50 px-7 py-7">
+        <p class="font-serif text-xl font-bold text-slate-900">
+          {ctaHeadline ?? defaultCtaHeadline}
+        </p>
+        <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+          {ctaBody ?? defaultCtaBody}
+        </p>
+        <div class="mt-5">
+          <a
+            href={`${siteConfig.contact.taxdomeSignup}?utm_source=homehealthcpa&utm_medium=article&utm_campaign=organic&utm_content=article-cta`}
+            class="inline-flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+          >
+            Start your intake →
+          </a>
+        </div>
+        <p class="mt-3 text-xs text-slate-400">
+          By {siteConfig.founder.name}, {siteConfig.founder.suffix} · GA License #{licenseNumber} · RTW Advisors
+        </p>
+      </div>
+
+      <div class="mt-10 border-t border-stone-200 pt-8">
+        <a href="/articles" class="text-sm font-medium text-teal-700 hover:text-teal-900 transition">
+          ← All articles
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .prose-article :global(h2) { font-family: 'Fraunces', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: #0f172a; margin-top: 2.5rem; margin-bottom: 0.75rem; line-height: 1.3; }
+  .prose-article :global(h3) { font-size: 1.125rem; font-weight: 600; color: #1e293b; margin-top: 2rem; margin-bottom: 0.5rem; }
+  .prose-article :global(p) { font-size: 1rem; line-height: 1.75; color: #334155; margin-bottom: 1.25rem; }
+  .prose-article :global(ul), .prose-article :global(ol) { padding-left: 1.5rem; margin-bottom: 1.25rem; color: #334155; }
+  .prose-article :global(li) { line-height: 1.7; margin-bottom: 0.4rem; }
+  .prose-article :global(strong) { font-weight: 600; color: #0f172a; }
+  .prose-article :global(table) { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .prose-article :global(th) { background: #f1f5f9; padding: 0.6rem 0.9rem; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; border-bottom: 2px solid #e2e8f0; }
+  .prose-article :global(td) { padding: 0.6rem 0.9rem; border-bottom: 1px solid #e2e8f0; color: #334155; }
+  .prose-article :global(tr:last-child td) { border-bottom: none; }
+  .prose-article :global(blockquote) { border-left: 3px solid #0d9488; padding-left: 1.25rem; margin: 1.5rem 0; color: #475569; font-style: italic; }
+  .prose-article :global(a) { color: #0d9488; text-decoration: underline; text-underline-offset: 2px; }
+  .prose-article :global(a:hover) { color: #0f766e; }
+  .prose-article :global(hr) { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+</style>

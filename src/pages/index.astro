@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+import { getCollection } from 'astro:content';
+
+const title = 'HomeHealthCPA — Accounting and Tax for Home Health Agencies';
+const description = siteConfig.description;
+
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const featuredArticles = allArticles
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+---
+<BaseLayout title={title} description={description}>
+  <!-- Hero -->
+  <section class="mx-auto max-w-4xl px-6 py-20">
+    <div class="max-w-2xl">
+      <p class="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-4">For Home Health Agency Owners</p>
+      <h1 class="font-serif text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
+        A CPA focused on home health agencies — not general practice.
+      </h1>
+      <p class="mt-6 text-xl text-slate-600 leading-relaxed">
+        Medicare/Medicaid billing revenue recognition. EVV compliance cost accounting. Cost report preparation. LOC-funded payroll mechanics. Owner compensation in an S-Corp.
+      </p>
+      <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+        These aren't edge cases in how we work. They're the foundation. RTW Advisors is focused on home health agencies, and the bookkeeping, tax preparation, and financial advisory we provide reflects that.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href={`/get-started`}
+          class="rounded-md bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+        >
+          Get started
+        </a>
+        <a
+          href="/articles"
+          class="rounded-md border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-stone-50"
+        >
+          Read the articles
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we cover -->
+  <section class="border-t border-stone-200 bg-white">
+    <div class="mx-auto max-w-4xl px-6 py-20">
+      <h2 class="font-serif text-2xl font-bold text-slate-900 mb-12">What home health agency accounting actually requires</h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        {[
+          {
+            title: 'Medicare and Medicaid revenue recognition',
+            body: 'PDGM changed how Medicare pays home health. Most bookkeepers still categorize it as a single revenue line. We separate payer class, track remittance timing, and reconcile against expected billings monthly.',
+          },
+          {
+            title: 'EVV compliance cost accounting',
+            body: 'Electronic Visit Verification systems carry real implementation and ongoing costs. Whether those costs capitalize or expense immediately is a question with a right answer — and it\'s not the same for every agency.',
+          },
+          {
+            title: 'LOC-funded payroll mechanics',
+            body: 'Most home health agencies run payroll against a line of credit before Medicaid remittances arrive. The cash basis vs. accrual mismatch this creates is one of the main reasons owners think their agency is unprofitable when it isn\'t.',
+          },
+          {
+            title: 'Cost report preparation and tax interaction',
+            body: 'CMS-2552 cost report preparation is outside most CPAs\' scope. We don\'t prepare cost reports, but we do coordinate with your cost report preparer and ensure the tax return reflects the correct settlement positions.',
+          },
+          {
+            title: 'Owner compensation and S-Corp elections',
+            body: 'Reasonable compensation benchmarks for a home health agency owner who also provides direct care are different from a pure administrator. Getting this wrong creates IRS exposure and leaves QBI deductions on the table.',
+          },
+          {
+            title: 'Chart of accounts that separates payer classes',
+            body: 'A chart of accounts that lumps Medicare, Medicaid, private pay, and VA CCN into "service revenue" makes margin analysis impossible. We build charts of accounts that distinguish payer classes from day one.',
+          },
+        ].map(({ title, body }) => (
+          <div class="rounded-lg border border-stone-200 bg-stone-50 px-6 py-5">
+            <h3 class="font-semibold text-slate-900 text-base mb-2">{title}</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="border-t border-stone-200">
+    <div class="mx-auto max-w-4xl px-6 py-20">
+      <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4">What RTW Advisors provides</h2>
+      <p class="text-slate-600 mb-12 max-w-2xl">Bookkeeping, tax preparation, and fractional CFO advisory — delivered through the RTW.ai platform. Productized, monthly close guaranteed by the 5th.</p>
+      <div class="grid gap-6 md:grid-cols-3">
+        {[
+          {
+            name: 'Bookkeeping',
+            desc: 'Daily transaction posting, monthly close by the 5th, payer-class revenue separation, caregiver payroll reconciliation.',
+            price: 'from $697/mo',
+          },
+          {
+            name: 'Bookkeeping + Advisory',
+            desc: 'Everything in Bookkeeping plus quarterly KPI report, quarterly business review, and priority response.',
+            price: 'from $1,097/mo',
+            featured: true,
+          },
+          {
+            name: 'CFO Advisory',
+            desc: 'Full bookkeeping plus monthly strategy sessions, rolling cash forecast, integrated tax planning, and quarterly board seat.',
+            price: 'from $2,297/mo',
+          },
+        ].map(({ name, desc, price, featured }) => (
+          <div class={`rounded-xl border px-6 py-6 ${featured ? 'border-teal-400 bg-teal-50' : 'border-stone-200 bg-white'}`}>
+            <h3 class="font-semibold text-slate-900 text-base">{name}</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">{desc}</p>
+            <p class="mt-4 text-sm font-semibold text-slate-900">{price}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-sm text-slate-500">Tax preparation is priced separately as an annual engagement. Subscribers receive a 15% member rate.</p>
+      <div class="mt-8">
+        <a
+          href="/get-started"
+          class="rounded-md bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+        >
+          Start your intake →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent articles -->
+  {featuredArticles.length > 0 && (
+    <section class="border-t border-stone-200 bg-white">
+      <div class="mx-auto max-w-4xl px-6 py-20">
+        <div class="flex items-center justify-between mb-10">
+          <h2 class="font-serif text-2xl font-bold text-slate-900">Recent articles</h2>
+          <a href="/articles" class="text-sm font-medium text-teal-700 hover:text-teal-900 transition">All articles →</a>
+        </div>
+        <div class="space-y-6">
+          {featuredArticles.map((article) => (
+            <article class="border-b border-stone-100 pb-6 last:border-0">
+              <a href={`/articles/${article.id}`} class="group">
+                <h3 class="font-semibold text-slate-900 group-hover:text-teal-700 transition">{article.data.title}</h3>
+                <p class="mt-1 text-sm text-slate-600">{article.data.description}</p>
+                <p class="mt-2 text-xs text-slate-400">{article.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- About / attribution -->
+  <section class="border-t border-stone-200">
+    <div class="mx-auto max-w-4xl px-6 py-20">
+      <div class="max-w-2xl">
+        <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4">About the practice</h2>
+        <p class="text-slate-600 leading-relaxed">
+          HomeHealthCPA is a content property of <a href={siteConfig.parentUrl} class="text-teal-700 underline hover:text-teal-900">RTW Advisors LLC</a>, a virtual CPA practice based in Atlanta, GA. CPA services are provided by {siteConfig.founder.name}, {siteConfig.founder.suffix} (GA License #{siteConfig.founder.licenseNumber}). RTW Advisors works with home health agencies, home care businesses, dermatology practices, and other healthcare operators generating $500K to $3M annually.
+        </p>
+        <a href="/about" class="mt-4 inline-block text-sm font-medium text-teal-700 hover:text-teal-900 transition">Learn more about Askia Roberts, CPA →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

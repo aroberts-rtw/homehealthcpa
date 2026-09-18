@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+
+const title = 'About Askia Roberts, CPA — HomeHealthCPA';
+const description = 'Askia Roberts is a CPA (GA License #CPA038784) and founder of RTW Advisors LLC. RTW Advisors provides bookkeeping, tax preparation, and fractional CFO advisory to home health agencies and healthcare businesses.';
+---
+<BaseLayout title={title} description={description}>
+  <div class="mx-auto max-w-2xl px-6 py-24">
+    <h1 class="font-serif text-4xl font-bold text-slate-900 mb-8">About</h1>
+
+    <div class="prose-article space-y-6 text-slate-600 leading-relaxed">
+      <p>
+        HomeHealthCPA is a content property of <a href={siteConfig.parentUrl}>RTW Advisors LLC</a>, a virtual CPA practice based in Atlanta, Georgia. CPA services are provided by Askia Roberts, CPA (GA License #CPA038784).
+      </p>
+
+      <p>
+        RTW Advisors works with home health agencies, home care businesses, dermatology practices, and other healthcare operators generating $500K to $3M annually. The practice is focused on healthcare-niche clients — not general small business accounting.
+      </p>
+
+      <p>
+        Articles on this site are written for home health agency owners and administrators who need to understand the accounting and tax dimensions of their business. The goal is specificity: Medicare/Medicaid revenue recognition, EVV compliance cost treatment, cost report interaction with the tax return, owner compensation in S-Corps with clinical operations, and the cash-flow mechanics of LOC-funded payroll.
+      </p>
+
+      <p>
+        The editorial standard is that every article must pass a one-sentence test: a home health administrator who reads it knows something specific they can act on or verify with their own accountant.
+      </p>
+
+      <h2 class="font-serif text-2xl font-bold text-slate-900 mt-10">Credentials and disclosures</h2>
+
+      <ul class="space-y-2 text-sm">
+        <li>Askia Roberts, CPA — Georgia License #CPA038784</li>
+        <li>RTW Advisors LLC — Atlanta, Georgia</li>
+        <li>Services provided to clients in multiple states under applicable interstate practice rules</li>
+        <li>No "specialist" designation claimed. RTW Advisors is focused on home health and healthcare-adjacent businesses — not board-certified in any specialty.</li>
+      </ul>
+
+      <div class="mt-8 rounded-lg border border-stone-200 bg-stone-100 px-5 py-4 text-xs text-slate-500 leading-relaxed">
+        <strong class="text-slate-600">Educational content only.</strong> Articles on this site are for general informational purposes and do not constitute tax, legal, or financial advice. Consult a qualified professional regarding your specific situation.
+      </div>
+
+      <div class="mt-8">
+        <a
+          href="/get-started"
+          class="inline-flex items-center justify-center rounded-md bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-700"
+        >
+          Work with RTW Advisors →
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .prose-article :global(a) { color: #0d9488; text-decoration: underline; }
+  .prose-article :global(a:hover) { color: #0f766e; }
+  .prose-article :global(h2) { font-family: 'Fraunces', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: #0f172a; }
+</style>

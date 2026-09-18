@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+
+const title = 'Get Started — HomeHealthCPA';
+const description = 'Start your engagement with RTW Advisors. Bookkeeping, tax preparation, and advisory for home health agencies — self-serve onboarding through the client portal.';
+
+const ctaUrl = `${siteConfig.contact.taxdomeSignup}?utm_source=homehealthcpa&utm_medium=site&utm_campaign=organic&utm_content=get-started-page`;
+---
+<BaseLayout title={title} description={description} noindex={false}>
+  <div class="mx-auto max-w-2xl px-6 py-24 text-center">
+    <p class="text-xs font-semibold uppercase tracking-widest text-teal-600 mb-4">Start your engagement</p>
+    <h1 class="font-serif text-4xl font-bold text-slate-900 leading-tight mb-6">
+      Home health agency accounting, handled.
+    </h1>
+    <p class="text-lg text-slate-600 leading-relaxed mb-10">
+      Onboarding takes about 30 minutes and happens entirely in the client portal. No discovery call required. Select your service tier, complete the intake organizer, and receive your engagement letter with pricing. Your first close follows after onboarding.
+    </p>
+
+    <a
+      href={ctaUrl}
+      class="inline-flex items-center justify-center rounded-md bg-slate-900 px-8 py-4 text-base font-semibold text-white shadow transition hover:bg-teal-700"
+    >
+      Open the client portal →
+    </a>
+
+    <p class="mt-6 text-sm text-slate-500">
+      You'll create a free account in the RTW Advisors client portal. Service selection and pricing happen inside the onboarding flow — not before.
+    </p>
+
+    <div class="mt-20 text-left border-t border-stone-200 pt-12">
+      <h2 class="font-serif text-xl font-bold text-slate-900 mb-6">What happens after you sign up</h2>
+      <ol class="space-y-5 text-slate-600 text-sm leading-relaxed">
+        <li class="flex gap-4">
+          <span class="font-bold text-teal-600 tabular-nums shrink-0">1.</span>
+          <span><strong class="text-slate-900">Create your portal account.</strong> The portal is the intake, document storage, and communication hub for your engagement. You'll use it throughout.</span>
+        </li>
+        <li class="flex gap-4">
+          <span class="font-bold text-teal-600 tabular-nums shrink-0">2.</span>
+          <span><strong class="text-slate-900">Complete the organizer.</strong> We'll ask for your current QBO (or bookkeeping setup), payer mix, entity structure, and payroll provider. Takes 20–30 minutes.</span>
+        </li>
+        <li class="flex gap-4">
+          <span class="font-bold text-teal-600 tabular-nums shrink-0">3.</span>
+          <span><strong class="text-slate-900">Receive your engagement letter.</strong> Scope, price, and start date — in writing. You sign and pay through the portal.</span>
+        </li>
+        <li class="flex gap-4">
+          <span class="font-bold text-teal-600 tabular-nums shrink-0">4.</span>
+          <span><strong class="text-slate-900">First close delivered.</strong> Monthly close by the 5th of the following month. Payer-class revenue separation from day one.</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="mt-12 rounded-lg border border-stone-200 bg-stone-100 px-5 py-4 text-xs text-slate-500 text-left leading-relaxed">
+      CPA services provided by {siteConfig.founder.name}, {siteConfig.founder.suffix} (GA License #{siteConfig.founder.licenseNumber}) through RTW Advisors LLC. Educational content on this site does not constitute tax or legal advice. Consult a qualified professional regarding your specific situation.
+    </div>
+  </div>
+</BaseLayout>
