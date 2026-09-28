@@ -1,0 +1,19 @@
+# HomeHealthCPA
+
+> Educational accounting and tax content for home health agency owners and administrators, published by RTW Advisors LLC. Written by Askia Roberts, CPA (Georgia license CPA038784). Content is educational only and is not tax, legal, or financial advice for any specific situation.
+
+HomeHealthCPA covers home health agency cash flow and line-of-credit-funded payroll, Medicare and Medicaid revenue timing, payer-class bookkeeping, EVV compliance costs, cost report coordination, and owner compensation in an S-corporation. Laws and payer rules change; each article is dated, so check the publication or update date before relying on it.
+
+## Articles
+
+- [Home Health Agency Cash Flow: Why the Books Look Fine and the Bank Account Doesn't](https://www.homehealthcpa.com/articles/home-health-agency-cash-flow-loc-funded-payroll): Why revenue is recognized before cash arrives, how line-of-credit draws should be recorded, and how to read the monthly close.
+- [All articles](https://www.homehealthcpa.com/articles): Index of published articles.
+
+## About
+
+- [About the author and RTW Advisors](https://www.homehealthcpa.com/about): Credentials, disclosures, and editorial standard.
+- [Get started](https://www.homehealthcpa.com/get-started): Self-serve onboarding through the RTW Advisors client portal.
+
+## Optional
+
+- [Sitemap](https://www.homehealthcpa.com/sitemap-index.xml)
