@@ -1,25 +1,26 @@
 ---
 title: "Home Health Agency Cash Flow: Why the Books Look Fine and the Bank Account Doesn't"
-description: "The 30-to-60-day Medicaid remittance lag, line-of-credit-funded payroll, and the cash-basis vs. accrual mismatch are responsible for more home health owner confusion than any other single accounting issue. Here is what is actually happening and how to read it."
+description: "The 30-to-60-day Medicaid remittance lag, line-of-credit-funded payroll, and the cash-basis vs. accrual mismatch can leave a profitable home health agency short on cash. Here is what is happening and how to read it."
 pubDate: 2026-09-18
+updatedDate: 2026-09-27
 author: "Askia Roberts, CPA"
 licenseNumber: "CPA038784"
 targetQuery: "home health agency cash flow problems line of credit payroll"
 featured: true
 ctaHeadline: "Your books may show profit your bank account hasn't seen yet — and that gap deserves an explanation, not silence."
-ctaBody: "Most home health agency owners we work with have experienced this: the P&L says the agency made money, the accountant says everything looks fine, and yet the owner is personally guaranteeing a line of credit to make Friday payroll. RTW Advisors works with home health agencies on the accounting and financial structure that makes this gap visible and manageable."
+ctaBody: "This is a common pattern among home health agencies: the P&L says the agency made money, the accountant says everything looks fine, and yet the owner is personally guaranteeing a line of credit to make Friday payroll. RTW Advisors works with home health agencies on the accounting and financial structure that makes this gap visible and manageable."
 faqs:
   - q: "Why does my home health agency always seem short on cash even when we're profitable?"
-    a: "The most common cause is Medicaid remittance timing. Medicaid typically pays 30 to 60 days after a claim is submitted. If your agency pays caregivers weekly or bi-weekly but receives Medicaid payments monthly or on a 45-day cycle, you are continuously funding a payroll obligation with cash that hasn't arrived yet. On an accrual-basis P&L, the revenue appears when services are delivered — but the cash doesn't arrive until weeks later. The gap is funded by a line of credit, owner capital, or both."
+    a: "A common cause is Medicaid remittance timing. Medicaid typically pays 30 to 60 days after a claim is submitted. If your agency pays caregivers weekly or bi-weekly but receives Medicaid payments monthly or on a 45-day cycle, you are continuously funding a payroll obligation with cash that hasn't arrived yet. On an accrual-basis P&L, the revenue appears when services are delivered — but the cash doesn't arrive until weeks later. The gap is funded by a line of credit, owner capital, or both."
   - q: "How should LOC-funded payroll be recorded in QuickBooks?"
     a: "Line-of-credit draws used to fund payroll should be recorded as draws against the LOC liability account (a credit line payable), not as income. The corresponding debit is to cash. When payroll is processed, payroll expenses reduce cash normally. When Medicaid or other payer remittances arrive and are used to repay the LOC, the entry credits cash and debits the LOC liability. Interest on the LOC is a separate expense entry. Many agencies record LOC draws incorrectly — either as a separate income line or as a pass-through that never hits the P&L — which distorts both profitability and leverage ratios."
   - q: "What is the difference between cash basis and accrual basis for a home health agency?"
     a: "On cash basis accounting, revenue is recognized when cash is received and expenses are recognized when cash is paid. On accrual basis, revenue is recognized when services are delivered (regardless of payment timing) and expenses are recognized when incurred. For a Medicaid-heavy home health agency, cash basis accounting can make a profitable month appear unprofitable (because Medicaid remittances for that month haven't arrived yet) and a slow service month appear profitable (because remittances from the prior month's high-volume period are arriving). Most home health agencies should use accrual basis for management reporting even if cash basis is elected for tax purposes."
   - q: "Is interest on a home health agency line of credit tax-deductible?"
-    a: "Yes, interest on a business line of credit used for business purposes — including payroll — is deductible as a business interest expense under IRC Section 163. If the agency is subject to the business interest expense limitation under Section 163(j) (generally applies to businesses with average annual gross receipts exceeding $30 million, though pass-through structures can complicate this), a portion of the deduction may be deferred. Most home health agencies under $30M in revenue are not subject to the Section 163(j) limitation."
+    a: "Yes, interest on a business line of credit used for business purposes — including payroll — is deductible as a business interest expense under IRC Section 163. If the agency is subject to the business interest expense limitation under Section 163(j) (generally applies to businesses whose average annual gross receipts for the prior three years exceed an inflation-adjusted threshold, $32 million for 2026 and $31 million for 2025, though pass-through structures and aggregation rules can complicate this), a portion of the deduction may be deferred. Most home health agencies below that threshold are not subject to the Section 163(j) limitation."
 ---
 
-A home health agency owner once described the experience this way: "My accountant tells me we had our best quarter ever. I just finished paying down the line of credit I had to draw on to make payroll for that same quarter." The confusion is legitimate. It reflects a real accounting phenomenon — not a mistake, and not an anomaly — and understanding it is one of the most practically useful things a home health operator can do.
+Consider a composite example, based on patterns common in home health rather than any one agency. An owner is told, "We had our best quarter ever," and in the same week finishes paying down the line of credit that was drawn to make payroll for that same quarter. The confusion is legitimate. It reflects a real accounting phenomenon — not a mistake, and not an anomaly — and understanding it is one of the most practically useful things a home health operator can do.
 
 ## The core problem: revenue recognized before cash arrives
 
@@ -53,15 +54,15 @@ On **accrual basis**, October's high volume appears as October revenue regardles
 
 For management purposes — for any decision about whether to hire, expand territory, add a payer type, or take an owner distribution — accrual-basis reporting is almost always more informative for a home health agency. A P&L that moves in lock-step with Medicaid remittance cycles rather than service delivery cycles makes it difficult to evaluate actual operational performance.
 
-This doesn't mean you must use accrual for taxes. Most small agencies elect cash basis for tax filing, which is permissible and often advantageous for tax timing purposes. But the internal management reports the owner uses to make decisions should be on accrual, even if tax returns are on cash.
+This doesn't mean you must use accrual for taxes. Many small agencies elect cash basis for tax filing where they are eligible to, which is permissible and can be advantageous for tax timing purposes. But the internal management reports the owner uses to make decisions should be on accrual, even if tax returns are on cash.
 
 ## The PDGM overlay: how the payment model adds complexity
 
 The Patient-Driven Groupings Model, which CMS implemented for Medicare home health beginning in January 2020, changed how the agency gets paid in ways that directly affect cash flow planning.
 
-Under PDGM, Medicare payments come in two installments per 30-day period: a Request for Anticipated Payment (RAP) at the start of the period and a final claim payment at the end. The RAP advance is a percentage of the expected episode payment. When CMS reduced RAP percentages and then eliminated them for established agencies starting in 2021, agencies that had relied on RAP advances for working capital found their cash flow model disrupted.
+Under PDGM, Medicare pays a case-mix-adjusted rate for each 30-day period of care. Early in PDGM, agencies received part of that payment up front through a Request for Anticipated Payment (RAP). CMS reduced the RAP advance to 20 percent for existing agencies in 2020, set it to zero in 2021, and replaced RAPs with a one-time Notice of Admission (NOA) beginning January 1, 2022. Agencies that had relied on RAP advances for working capital found their cash flow model disrupted.
 
-For agencies with significant Medicare volume, the transition to full claims-based payment meant that a larger share of Medicare revenue is now collected at the back end of the service period rather than the front. If your bookkeeping doesn't separate Medicare from Medicaid, and doesn't track the sub-timing of Medicare payments under PDGM, you lose visibility into the component-level cash flow picture. A month that looks like a normal collection month may actually contain a cluster of delayed final claim payments from a high-volume prior period.
+For agencies with significant Medicare volume, the move to full claims-based payment meant that a larger share of Medicare revenue is collected at the back end of the service period rather than the front. If your bookkeeping doesn't separate Medicare from Medicaid, and doesn't track the sub-timing of Medicare payments under PDGM, you lose visibility into the component-level cash flow picture. A month that looks like a normal collection month may actually contain a cluster of delayed final claim payments from a high-volume prior period.
 
 ## Private pay and VA CCN: different timing, same structural issue
 
