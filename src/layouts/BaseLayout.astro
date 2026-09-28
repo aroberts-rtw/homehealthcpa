@@ -134,6 +134,26 @@ const orgSchema = {
       <>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
         <script set:html={`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${ga4Id}');`} />
+        {/* Click events: tel: links (phone_click) and UTM-tagged TaxDome CTAs (taxdome_cta_click) */}
+        <script set:html={`document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var href = a.getAttribute('href') || '';
+  var params = { link_url: href, page_path: location.pathname, transport_type: 'beacon' };
+  if (href.indexOf('tel:') === 0) {
+    gtag('event', 'phone_click', params);
+    return;
+  }
+  if (href.indexOf('client-center.rtwadvisors.com') === -1) return;
+  try {
+    var q = new URL(href, location.href).searchParams;
+    if (!q.has('utm_source')) return;
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+      if (q.has(k)) params[k] = q.get(k);
+    });
+    gtag('event', 'taxdome_cta_click', params);
+  } catch (err) {}
+});`} />
       </>
     )}
 
