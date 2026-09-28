@@ -7,7 +7,7 @@ export const siteConfig = {
   url: 'https://www.homehealthcpa.com',
   tagline: 'Accounting and tax for home health agencies — from a CPA focused on this business.',
   description:
-    'Bookkeeping, tax preparation, and fractional CFO advisory for home health agencies. RTW Advisors is focused on home health — Medicare/Medicaid billing, EVV compliance, cost reports, LOC-funded payroll, and owner compensation — not general practice accounting.',
+    'Bookkeeping, tax preparation, and fractional CFO advisory for home health agencies. RTW Advisors is focused on home health — Medicare/Medicaid billing, EVV compliance, cost reports, LOC-funded payroll, and owner compensation.',
   niche: 'home health agencies',
   founder: {
     name: 'Askia Roberts',
