@@ -26,6 +26,7 @@ const orgSchema = {
       legalName: 'RTW Advisors LLC',
       url: siteConfig.url,
       email: siteConfig.contact.email,
+      ...(siteConfig.contact.phone ? { telephone: siteConfig.contact.phone } : {}),
       description: siteConfig.description,
       foundingDate: '2015',
       parentOrganization: {

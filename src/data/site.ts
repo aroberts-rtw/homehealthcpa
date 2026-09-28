@@ -22,5 +22,7 @@ export const siteConfig = {
     getStarted: '/get-started',
     portal: 'https://client-center.rtwadvisors.com/login',
     email: 'aroberts@rtwadvisors.com',
+    // Tracking number set via PUBLIC_TRACKING_PHONE in Vercel; nothing renders until it is set
+    phone: import.meta.env.PUBLIC_TRACKING_PHONE ?? '',
   },
 } as const;

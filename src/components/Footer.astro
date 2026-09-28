@@ -25,6 +25,9 @@ const year = new Date().getFullYear();
           <li><a href="/about" class="hover:text-teal-700 transition">About Askia Roberts, CPA</a></li>
           <li><a href="/get-started" class="hover:text-teal-700 transition">Get started</a></li>
           <li><a href={siteConfig.contact.portal} class="hover:text-teal-700 transition">Client portal</a></li>
+          {siteConfig.contact.phone && (
+            <li><a href={`tel:${siteConfig.contact.phone.replace(/[^\d+]/g, '')}`} class="hover:text-teal-700 transition">{siteConfig.contact.phone}</a></li>
+          )}
         </ul>
       </div>
     </div>
